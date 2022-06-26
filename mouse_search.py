@@ -4,7 +4,6 @@ from queue import PriorityQueue
 import time 
 import pygame_menu
 
-
 WIDTH = 800
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
@@ -214,19 +213,22 @@ def get_clicked_pos(pos, rows, width):
 
 def set_difficulty(value, difficulty):
 	# Do the job here !
-
+	global box
 	if difficulty == 3:
-		return 10
+		box = 10
+		return  
 	elif difficulty == 2:
-		return 25
+		box = 25
+		return 
 	else:
-		return 50
+		box = 50
+		return 
 
 def start_the_game():
 	# Do the job here !
 
 	win,width = WIN,WIDTH 
-	ROWS = 25
+	ROWS = box
 	grid = make_grid(ROWS, width)
 
 	start = None
@@ -276,8 +278,8 @@ def start_the_game():
 						for spot in row:
 							spot.update_neighbors(grid)
 
-					dfs_I(lambda: draw(win, grid, ROWS, width),grid,start,end)
-					#bfs(lambda: draw(win, grid, ROWS, width),grid,start,end)
+					#dfs_I(lambda: draw(win, grid, ROWS, width),grid,start,end)
+					bfs(lambda: draw(win, grid, ROWS, width),grid,start,end)
 					#print(start.neighbors)
 					#print(end.neighbors)
 
@@ -290,8 +292,10 @@ def start_the_game():
 		
 	pygame.quit()
 
-
 def main(win, width):
+
+	font = pygame_menu.font.FONT_8BIT
+
 	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
 		theme=pygame_menu.themes.THEME_DARK)
 
@@ -301,6 +305,5 @@ def main(win, width):
 	menu.add.button('Quit', pygame_menu.events.EXIT)
 
 	menu.mainloop(WIN)
-
 
 main(WIN,WIDTH)
