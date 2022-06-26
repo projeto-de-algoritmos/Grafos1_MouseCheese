@@ -211,9 +211,10 @@ def get_clicked_pos(pos, rows, width):
 
 	return row, col
 
+box = 25
+
 def set_difficulty(value, difficulty):
 	# Do the job here !
-	global box
 	if difficulty == 3:
 		box = 10
 		return  
@@ -223,6 +224,11 @@ def set_difficulty(value, difficulty):
 	else:
 		box = 50
 		return 
+
+search = 1
+
+def set_search(value, busca):
+	search = busca
 
 def start_the_game():
 	# Do the job here !
@@ -278,8 +284,12 @@ def start_the_game():
 						for spot in row:
 							spot.update_neighbors(grid)
 
+					if search == 1:
+						dfs_I(lambda: draw(win, grid, ROWS, width),grid,start,end)
+					else:
+						bfs(lambda: draw(win, grid, ROWS, width),grid,start,end)
+						
 					#dfs_I(lambda: draw(win, grid, ROWS, width),grid,start,end)
-					bfs(lambda: draw(win, grid, ROWS, width),grid,start,end)
 					#print(start.neighbors)
 					#print(end.neighbors)
 
@@ -289,6 +299,13 @@ def start_the_game():
 					start = None
 					end = None
 					grid = make_grid(ROWS, width)
+
+				if event.key == pygame.K_m:
+					start = None
+					end = None
+					#grid = make_grid(ROWS, width)
+					main(win,width)
+
 		
 	pygame.quit()
 
@@ -299,8 +316,8 @@ def main(win, width):
 	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
 		theme=pygame_menu.themes.THEME_DARK)
 
-	menu.add.text_input('Name :', default='Your name')
-	menu.add.selector('Difficulty :', [('Hard 50 rows', 1), ('Medium 25 rows', 2),('Easy 10 rows',3)], onchange=set_difficulty)
+	menu.add.selector('Difficulty :', [('Medium 25 rows', 2),('Hard 50 rows', 1), ('Easy 10 rows',3)],default = 0, onchange=set_difficulty)
+	menu.add.selector('Busca :', [('DFS', 1), ('BFS', 2)],default = 0 ,onchange=set_search)
 	menu.add.button('Play', start_the_game)
 	menu.add.button('Quit', pygame_menu.events.EXIT)
 
