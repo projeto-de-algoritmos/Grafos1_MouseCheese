@@ -214,22 +214,24 @@ def get_clicked_pos(pos, rows, width):
 
 def set_difficulty(value, difficulty):
 	# Do the job here !
-	pass
+
+	if difficulty == 3:
+		return 10
+	elif difficulty == 2:
+		return 25
+	else:
+		return 50
 
 def start_the_game():
 	# Do the job here !
-	pass
 
-def main(win, width):
-
+	win,width = WIN,WIDTH 
 	ROWS = 25
 	grid = make_grid(ROWS, width)
 
 	start = None
 	end = None
-
 	run = True
-
 
 	while run:
 		draw(win, grid, ROWS, width)
@@ -286,7 +288,19 @@ def main(win, width):
 					end = None
 					grid = make_grid(ROWS, width)
 		
-
 	pygame.quit()
 
-main(WIN, WIDTH)
+
+def main(win, width):
+	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
+		theme=pygame_menu.themes.THEME_DARK)
+
+	menu.add.text_input('Name :', default='Your name')
+	menu.add.selector('Difficulty :', [('Hard 50 rows', 1), ('Medium 25 rows', 2),('Easy 10 rows',3)], onchange=set_difficulty)
+	menu.add.button('Play', start_the_game)
+	menu.add.button('Quit', pygame_menu.events.EXIT)
+
+	menu.mainloop(WIN)
+
+
+main(WIN,WIDTH)
