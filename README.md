@@ -3,7 +3,7 @@ O trabalho é uma demonstração de como a BFS e a DFS funcionam de forma visual
 
 Esqueci o template, depois arrumo
 
-# Alunos:
+# Alunos
 
 Aluno   | Matrícula
 --------- | ------
