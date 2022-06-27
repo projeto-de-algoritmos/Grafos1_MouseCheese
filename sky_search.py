@@ -123,7 +123,7 @@ def dfs_I(draw,grid,start,end):
 
 		if cube == end:
 			reconstruct_path(came_from,end,draw)
-			print("Achei o queijo!!")
+			print("Achei o Planeta Gama, vou colonizá-lo!!")
 			start.make_start()
 			end.make_end()
 			break
@@ -159,7 +159,7 @@ def bfs(draw,grid, start,end): #function for BFS
 				pygame.quit()
 
 		if m == end:
-			print("Rato achou o queijo\nSe divirta com seu queijo!!")
+			print("Spaceship achou o Planeta Gama\nSe divirta com seu Planeta, crie uma civilização nele!!")
 			reconstruct_path(came_from,end,draw)
 			end.make_end()
 			start.make_start()
@@ -369,9 +369,9 @@ def main(win, width):
 		theme=mytheme
 	)
 
-	text = ["""Your objective is first :\n1 - Place the mouse\n2 - Place the cheese \n 
+	text = ["""Your objective is first :\n1 - Place the Spaceship\n2 - Place the Planet Gama \n 
 	then place the barriers in order to make it difficult\n (and not impossible)\n
-	for the mouse to reach the cheese.\n'"""]
+	for the Spaceship to reach the Planeta Gama.\n'"""]
 
 	for m in text:
 		about_menu.add.label(m, align=pygame_menu.locals.ALIGN_LEFT, font_size=15)
