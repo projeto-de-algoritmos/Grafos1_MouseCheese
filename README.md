@@ -21,8 +21,9 @@ Medium | 25
 Hard | 50
 
 Além disso é fornecido uma opção onde o usuário escolhe se quer rodar uma BFS ou uma DFS. 
-É possível voltar ao menu ao apertar a tecla 'm' e também é possível limpar a malha para redesenhar ao apertar 'c'.
-Ao apertar Quit, o jogo se encerra.
+ - É possível voltar ao menu ao apertar a tecla 'm'
+ - É possível limpar a malha para redesenhar ao apertar 'c'.
+ - Ao apertar Quit, o jogo se encerra.
 
 # Screenshots
 
