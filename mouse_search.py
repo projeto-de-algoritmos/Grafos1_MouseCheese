@@ -376,7 +376,7 @@ def main(win, width):
 		about_menu.add.vertical_margin(30)
 		about_menu.add.button('Return to menu', pygame_menu.events.BACK)
 
-	menu.add.selector('Difficulty :', [('Easy 10 rows',3),('Medium 25 rows', 2),('Hard 50 rows', 1)], onchange=set_difficulty)
+	menu.add.selector('Difficulty :', [('Easy 10 rows',3),('Medium 25 rows', 2),('Hard 50 rows', 1)], default = 1,onchange=set_difficulty)
 	menu.add.selector('Busca :', [('DFS', 1), ('BFS', 2)],default = 1 ,onchange=set_search)
 	menu.add.button('Play', start_the_game)
 	menu.add.button('Objective', about_menu)
