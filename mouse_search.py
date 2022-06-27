@@ -1,6 +1,7 @@
 import pygame
 import time
 import pygame_menu
+from pygame_menu import Theme
 
 WIDTH = 800
 pygame.init()
@@ -102,7 +103,6 @@ def reconstruct_path(came_from, current, draw):
 		current.make_path()
 		draw()
 
-came_from = {}
 visited = set()
 
 def dfs_I(draw,grid,start,end):
@@ -110,6 +110,8 @@ def dfs_I(draw,grid,start,end):
 	stack, visited = [], []
 	stack.append(start)
 	print("\nDFS : ")
+	came_from = {}
+
 	while len(stack)>0:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -118,6 +120,7 @@ def dfs_I(draw,grid,start,end):
 		cube = stack.pop()
 
 		if cube == end:
+			reconstruct_path(came_from,end,draw)
 			print("Achei o queijo!!")
 			end.make_end()
 			break
@@ -131,6 +134,9 @@ def dfs_I(draw,grid,start,end):
 			if neighbor not in visited:
 				stack.append(neighbor)
 				neighbor.make_open()
+				came_from[neighbor] = cube
+
+
 
 		if cube != start:
 			cube.make_closed()
@@ -143,6 +149,7 @@ queue = []     #Initialize a queue
 def bfs(draw,grid, start,end): #function for BFS
 	visited_bfs.append(start)
 	queue.append(start)
+	came_from = {}
 
 	while queue:          # Creating loop to visit each node
 		m = queue.pop(0) 
@@ -152,16 +159,18 @@ def bfs(draw,grid, start,end): #function for BFS
 
 		if m == end:
 			print("Rato achou o queijo\nSe divirta com seu queijo!!")
+			reconstruct_path(came_from,end,draw)
 			end.make_end()
 			return True
 
 		print(f"Estou em ({m.get_pos()[0]},{m.get_pos()[1]})")
-		for neighbour in m.neighbors:
+		for neighbor in m.neighbors:
 
-			if neighbour not in visited_bfs:
-				visited_bfs.append(neighbour)
-				queue.append(neighbour)
-				neighbour.make_open()
+			if neighbor not in visited_bfs:
+				visited_bfs.append(neighbor)
+				queue.append(neighbor)
+				came_from[neighbor] = m
+				neighbor.make_open()
 
 
 		if m != start:
@@ -334,31 +343,40 @@ def start_the_game():
 	pygame.quit()
 
 def main(win, width):
-	font = pygame_menu.font.FONT_8BIT
+	font = pygame_menu.font.FONT_FIRACODE
 
+	mytheme = Theme(background_color=(0, 0, 0, 0), # transparent background
+                title_background_color=(4, 47, 126),
+                title_font_shadow=True,
+                widget_padding=25,
+				widget_font = font,
+				widget_font_color = (255,255,255),
+				widget_font_size = 15
+                )
+
+	#pygame_menu.themes.THEME_DARK
 	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
-		theme=pygame_menu.themes.THEME_DARK)
+		theme=mytheme)
 
 	about_theme = pygame_menu.themes.THEME_DARK.copy()
 	about_theme.widget_margin = (0, 0)
 	about_theme.font = font
 
 	about_menu = pygame_menu.Menu(
-	height=WIDTH,
-	theme=about_theme,
-	title='About',
-	width=WIDTH,
+		'About', WIDTH, WIDTH,
+		theme=mytheme
 	)
 
-	text = ["""Your objective is first :\nPlace the mouse\nPlace the cheese \n 
-	then place the barriers in order to make it difficult (and not impossible)\nfor the mouse to reach the cheese.'"""]
+	text = ["""Your objective is first :\n1 - Place the mouse\n2 - Place the cheese \n 
+	then place the barriers in order to make it difficult\n (and not impossible)\n
+	for the mouse to reach the cheese.\n'"""]
 
 	for m in text:
-		about_menu.add.label(m, align=pygame_menu.locals.ALIGN_LEFT, font_size=20)
+		about_menu.add.label(m, align=pygame_menu.locals.ALIGN_LEFT, font_size=15)
 		about_menu.add.vertical_margin(30)
 		about_menu.add.button('Return to menu', pygame_menu.events.BACK)
 
-	menu.add.selector('Difficulty :', [('Medium 25 rows', 2), ('Easy 10 rows',3),('Hard 50 rows', 1)],default = 1, onchange=set_difficulty)
+	menu.add.selector('Difficulty :', [('Easy 10 rows',3),('Medium 25 rows', 2),('Hard 50 rows', 1)], onchange=set_difficulty)
 	menu.add.selector('Busca :', [('DFS', 1), ('BFS', 2)],default = 1 ,onchange=set_search)
 	menu.add.button('Play', start_the_game)
 	menu.add.button('Objective', about_menu)
