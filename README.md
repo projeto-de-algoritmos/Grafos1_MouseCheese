@@ -37,7 +37,7 @@ Framework : Foi usado 2 bibliotecas principais para criação do jogo
   - pygame-menu
   
 Clone o repositório com o comando :
-- git clone https://github.com/projeto-de-algoritmos/Grafos1_MouseCheese.git
+- git clone https://github.com/projeto-de-algoritmos/Grafos1_SkySearch
 
 Entre na pasta clonada:
 - cd Grafos1_SkySearch
