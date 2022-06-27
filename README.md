@@ -5,9 +5,10 @@ Esqueci o template, depois arrumo
 
 # Alunos:
 
-Luan Vasco Cavalcante - 190111836
-
-Sávio Cunha de Carvalho - 180130889
+Aluno   | Matrícula
+--------- | ------
+Luan Vasco Cavalcante | 190111836
+Sávio Cunha de Carvalho | 180130889
 
 # Como funciona
 
