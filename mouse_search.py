@@ -1,7 +1,6 @@
 import pygame
 import math
-from queue import PriorityQueue
-import time 
+import time
 import pygame_menu
 
 WIDTH = 800
@@ -211,24 +210,50 @@ def get_clicked_pos(pos, rows, width):
 
 	return row, col
 
-box = 25
 
 def set_difficulty(value, difficulty):
 	# Do the job here !
+
+	global box
+
+	box = 25
+
+	print(f"valor = {value}\nDificuldade = {difficulty}")
+
 	if difficulty == 3:
 		box = 10
+		print(f"box = {box}")
 		return  
 	elif difficulty == 2:
 		box = 25
+		print(f"box = {box}")
+
 		return 
 	else:
 		box = 50
+		print(f"box = {box}")
 		return 
 
 search = 1
 
+# entrega criar um repositório
+	# link pro repo dentro da organização
+	# e o vídeo de 3 a 5 min mostrando o trabalho rodando explicando o que é
+	# mostrar no código os pontos principais
+	# de preferência com os 2 membros :/
+
 def set_search(value, busca):
-	search = busca
+	global search
+
+	search = 1
+
+	if busca == 1: # dfs
+		search = 1
+		print(f"search = {search}")
+
+	else: # bfs
+		search = 2
+		print(f"search = {search}")
 
 def start_the_game():
 	# Do the job here !
@@ -310,16 +335,43 @@ def start_the_game():
 	pygame.quit()
 
 def main(win, width):
-
 	font = pygame_menu.font.FONT_8BIT
 
 	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
 		theme=pygame_menu.themes.THEME_DARK)
 
-	menu.add.selector('Difficulty :', [('Medium 25 rows', 2),('Hard 50 rows', 1), ('Easy 10 rows',3)],default = 0, onchange=set_difficulty)
-	menu.add.selector('Busca :', [('DFS', 1), ('BFS', 2)],default = 0 ,onchange=set_search)
+	about_theme = pygame_menu.themes.THEME_DARK.copy()
+	about_theme.widget_margin = (0, 0)
+	about_theme.font = font
+
+	about_menu = pygame_menu.Menu(
+	height=WIDTH,
+	theme=about_theme,
+	title='About',
+	width=WIDTH,
+	)
+
+	text = ["""Your objective is first :\nPlace the mouse\nPlace the cheese \n 
+	then place the barriers in order to make it difficult (and not impossible)\nfor the mouse to reach the cheese.'"""]
+
+	for m in text:
+		about_menu.add.label(m, align=pygame_menu.locals.ALIGN_LEFT, font_size=20)
+		about_menu.add.vertical_margin(30)
+		about_menu.add.button('Return to menu', pygame_menu.events.BACK)
+
+	menu.add.selector('Difficulty :', [('Medium 25 rows', 2), ('Easy 10 rows',3),('Hard 50 rows', 1)],default = 1, onchange=set_difficulty)
+	menu.add.selector('Busca :', [('DFS', 1), ('BFS', 2)],default = 1 ,onchange=set_search)
 	menu.add.button('Play', start_the_game)
+	menu.add.button('Objective', about_menu)
 	menu.add.button('Quit', pygame_menu.events.EXIT)
+
+	# gambiarra, adicionei um botão para adicionar um texto, pardon
+	menu.add.button('Press C to clear the screen', )
+	menu.add.button('Press M to return to the menu', )
+	menu.add.button('Press Space to launch the algorithm', )
+
+
+	#menu.add.add_text(x = WIDTH/8, y = WIDTH/8, text = text, font = font, size = 30, color = BLUE)
 
 	menu.mainloop(WIN)
 
