@@ -10,7 +10,7 @@ Sávio Cunha de Carvalho | 180130889
 
 # Sobre
  O objetivo do projeto é demonstrar como a DFS() e a BFS() funcionam de forma visual.
- Ao final, quando a busca encontra o endpoint a BFS() desenha a menor rota de um ponto ao outro,ou seja, do gato ao rato.
+ Ao final, quando a busca encontra o endpoint a BFS() desenha a menor rota de um ponto ao outro,ou seja, do rato ao queijo.
  O objetivo foi atingido tratando a malha quadriculada como um grafo onde cada quadrado seria um nó.
  O projeto funciona de forma simples, um menu é apresentado e algumas opções são dadas : 
 
@@ -52,6 +52,6 @@ Ao escolher as opções descritas na seção sobre, uma malha quadriculada apare
  - 3° clique(s) : posiciona as barreiras (ao clicar e arrastar pode ficar mais fácil)
  - 4° clique(s) com o botão direito do mouse : torna aquele quadrado vazio novamente (útil quando a passagem é fechada).
 
-#Outros 
+# Outros 
 O código foi adaptado da implementação do encontrada no canal TechWithTim.
 - Link : https://www.youtube.com/watch?v=JtiK0DOeI4A
