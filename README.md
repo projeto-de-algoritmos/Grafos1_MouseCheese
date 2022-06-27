@@ -34,24 +34,24 @@ Framework : Foi usado 2 bibliotecas principais para criação do jogo
   - pygame-menu
   
 Clone o repositório com o comando :
-git clone https://github.com/projeto-de-algoritmos/Grafos1_MouseCheese.git
+- git clone https://github.com/projeto-de-algoritmos/Grafos1_MouseCheese.git
 
 Entre na pasta clonada:
-cd Grafos1_MouseCheese
+- cd Grafos1_MouseCheese
 
 Em seguida instale as bibliotecas :
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 Execute o código :
-python3 mouse_search.py
+- python3 mouse_search.py
 
 # Uso 
 Ao escolher as opções descritas na seção sobre, uma malha quadriculada aparecerá e você deve seguir os seguintes passos:
-1° clique : posiciona o rato
-2° clique : posiciona o queijo
-3° clique(s) : posiciona as barreiras (ao clicar e arrastar pode ficar mais fácil)
-4° clique(s) com o botão direito do mouse : torna aquele quadrado vazio novamente (útil quando a passagem é fechada).
+ - 1° clique : posiciona o rato
+ - 2° clique : posiciona o queijo
+ - 3° clique(s) : posiciona as barreiras (ao clicar e arrastar pode ficar mais fácil)
+ - 4° clique(s) com o botão direito do mouse : torna aquele quadrado vazio novamente (útil quando a passagem é fechada).
 
 #Outros 
 O código foi adaptado da implementação do encontrada no canal TechWithTim.
-Link : https://www.youtube.com/watch?v=JtiK0DOeI4A
+- Link : https://www.youtube.com/watch?v=JtiK0DOeI4A
