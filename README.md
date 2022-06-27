@@ -1,4 +1,7 @@
-# Grafos1_MouseCheese
+# MouseCheese
+
+### Conteúdo da Disciplina: Grafos 1
+
 O trabalho é uma demonstração de como a BFS e a DFS funcionam de forma visual. 
 
 # Alunos
