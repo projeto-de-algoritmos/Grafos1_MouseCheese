@@ -6,7 +6,7 @@ from pygame_menu import Theme
 WIDTH = 800
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
-pygame.display.set_caption("Mouse Game")
+pygame.display.set_caption("SkySearch Game")
 
 RED = (0, 255, 100)
 GREEN = (0, 155, 0)
@@ -128,7 +128,7 @@ def dfs_I(draw,grid,start,end):
 			end.make_end()
 			break
 		
-		print(f"Estou em ({cube.get_pos()[0]},{cube.get_pos()[1]})")
+		#print(f"Estou em ({cube.get_pos()[0]},{cube.get_pos()[1]})")
 
 		if cube not in visited:
 			visited.append(cube)
@@ -165,7 +165,7 @@ def bfs(draw,grid, start,end): #function for BFS
 			start.make_start()
 			return True
 
-		print(f"Estou em ({m.get_pos()[0]},{m.get_pos()[1]})")
+		#print(f"Estou em ({m.get_pos()[0]},{m.get_pos()[1]})")
 		for neighbor in m.neighbors:
 
 			if neighbor not in visited_bfs:
@@ -228,20 +228,20 @@ def set_difficulty(value, difficulty):
 
 	box = 25
 
-	print(f"valor = {value}\nDificuldade = {difficulty}")
+	#print(f"valor = {value}\nDificuldade = {difficulty}")
 
 	if difficulty == 3:
 		box = 10
-		print(f"box = {box}")
+		#print(f"box = {box}")
 		return  
 	elif difficulty == 2:
 		box = 25
-		print(f"box = {box}")
+		#print(f"box = {box}")
 
 		return 
 	else:
 		box = 50
-		print(f"box = {box}")
+		#print(f"box = {box}")
 		return 
 
 search = 1
@@ -259,11 +259,11 @@ def set_search(value, busca):
 
 	if busca == 1: # dfs
 		search = 1
-		print(f"search = {search}")
+		#print(f"search = {search}")
 
 	else: # bfs
 		search = 2
-		print(f"search = {search}")
+		#print(f"search = {search}")
 
 def start_the_game():
 	# Do the job here !
@@ -324,12 +324,6 @@ def start_the_game():
 					else:
 						bfs(lambda: draw(win, grid, ROWS, width),grid,start,end)
 						
-					#dfs_I(lambda: draw(win, grid, ROWS, width),grid,start,end)
-					#print(start.neighbors)
-					#print(end.neighbors)
-
-					print(f"Inicio era ({start.row},{start.col}) Final era ({end.row},{end.col})")
-
 				if event.key == pygame.K_c:
 					start = None
 					end = None
@@ -357,7 +351,7 @@ def main(win, width):
                 )
 
 	#pygame_menu.themes.THEME_DARK
-	menu = pygame_menu.Menu('Welcome To The Mouse Game', WIDTH, WIDTH,
+	menu = pygame_menu.Menu('Welcome To The SkySearch Game', WIDTH, WIDTH,
 		theme=mytheme)
 
 	about_theme = pygame_menu.themes.THEME_DARK.copy()
