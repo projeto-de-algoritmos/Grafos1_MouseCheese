@@ -29,7 +29,18 @@ Além disso é fornecido uma opção onde o usuário escolhe se quer rodar uma B
  - Ao apertar Quit, o jogo se encerra.
 
 # Screenshots
+Menu :
 ![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto0_menu.jpeg)
+25x25 posicionamento de nave,planeta e barreiras
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto1.jpeg)
+25x25 BFS com cheapest path
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto2_bfs.jpeg)
+25X25 DFS com caminho sem ser o mais curto
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto3_dfs.jpeg)
+10x10 BFS
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto4_dfs.jpeg)
+50x50 BFS
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto5_bfs_50.jpeg)
 
 # Instalação
 Linguagem : Python 3
