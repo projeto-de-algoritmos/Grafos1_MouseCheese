@@ -29,6 +29,7 @@ Além disso é fornecido uma opção onde o usuário escolhe se quer rodar uma B
  - Ao apertar Quit, o jogo se encerra.
 
 # Screenshots
+![alt text](https://github.com/projeto-de-algoritmos/Grafos1_SkySearch/blob/Luan/media/foto0_menu.jpeg)
 
 # Instalação
 Linguagem : Python 3
